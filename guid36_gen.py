@@ -24,10 +24,8 @@ def _int(w):
         if int(x)>100000:
             return true
         return abs(int(float(x))-float(x))>1e-7
-    if(w=='version' or w=='ver' or w=='Version'):
-        return 100001
-    elif int(w)==-1:
-        return 0
+    if w=='version' or w=='ver' or w=='Version':
+        return 'get_version'
     elif flt(w):
         return -114514
     else:
@@ -35,10 +33,15 @@ def _int(w):
 if __name__=='__main__':
     try:
         q=_int(input("guid_36 generator\nHow many guid_36s?(type 'version','ver' or 'Version' to show version) "))
-        if q<=0:
+        if q=='get_version':
+            lt=(2022,4,1)
+            if lt[1]==4 and lt[2]==1:
+                print("gUId_3SIX gEneRAtOr omega-11.45.1.4")
+                raise Exception
+            else:
+                print("guid_36 generator release-0.1.1")
+        elif q<=0:
             raise Exception
-        elif q==100001:
-            print("guid_36 generator release-0.1.0")
         else:
             for i in range(q):
                 print(guid())
