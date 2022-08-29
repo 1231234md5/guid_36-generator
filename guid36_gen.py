@@ -12,12 +12,12 @@ def guid():
             b+=cst[c%36]
             c=c//36
         return b[::-1]
-    def rndst(l):
+    def rndst(l,m='0123456789abcdefghijklmnopqrstuvwxyz'):
         s=''
         for i in range(l):
-            s+=random.choice('0123456789abcdefghijklmnopqrstuvwxyz')
+            s+=random.choice(m)
         return s
-    return rndst(6)+';'+cvtb36(gettime())+'-'+rndst(15)+'('+rndst(4)+')'
+    return rndst(6)+'-'+cvtb36(gettime())+'-'+rndst(7)+'-'+rndst(12)
 def _int(w):
     def flt(x):
         if int(x)>100000:
@@ -37,10 +37,10 @@ if __name__=='__main__':
         q=_int(input("guid_36 generator\nHow many guid_36s?(type 'version','ver' or 'Version' to show version) "))
         if q=='get_version':
             if chk_aprilfools():
-                print("gUId_3SIX gEneRAtOr omega-11.45.1.4")
+                print("gUId_3SIX gEneRAtOr Ωmega-11.45.1.4")
                 raise Exception
             else:
-                print("guid_36 generator release-0.1.1")
+                print("guid_36 generator release-0.3.0")
         elif q<=0:
             raise Exception
         elif chk_aprilfools():
